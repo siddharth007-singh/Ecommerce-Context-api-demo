@@ -1,29 +1,20 @@
-import React,{useState} from 'react';
-import { faker } from '@faker-js/faker';
-import SingleProduct from './SingleProduct';
-import "./styles.css";
+import { CartState } from "../Context";
+import SingleProduct from "./SingleProduct";
+// import './style.css';
 
-const HomePage = () => {
-    const productArray = [...Array(3)].map(()=>({
-        id: faker.datatype.uuid(),
-        name: faker.commerce.productName(), 
-        price: faker.commerce.price(),
-        image: faker.image.avatar(),
-    }));
+const Home = () => {
+  const { products } = CartState();
 
-    // console.log(productArray);
-    const [product] = useState(productArray);
+  return (
+    <div style={{ textAlign: "center" }}>
+      <span style={{ fontSize: 30 }}>Products Page</span>
+      <div className="productContainer">
+        {products.map((prod) => (
+          <SingleProduct prod={prod} key={prod.id} />
+        ))}
+      </div>
+    </div>
+  );
+};
 
-
-    return (
-        <>
-        <div className="productContainer">
-            {product.map((prod=>(
-                <SingleProduct prod={prod} key={prod.id}/>
-            )))}
-        </div>
-        </>
-    )
-}
-
-export default HomePage
+export default Home;

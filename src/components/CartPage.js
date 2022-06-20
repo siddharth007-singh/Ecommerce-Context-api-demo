@@ -1,10 +1,10 @@
-import React,{useState, useEffect, useContext} from 'react'
-import { Cart } from '../Context';
+import React,{useState, useEffect} from 'react'
+import { CartState } from '../Context';
 import SingleProduct from './SingleProduct'
 
 const CartPage = () => {
 
-    const {cart} = useContext(Cart);
+    const {cart} = CartState();
     const [total, setTotal] = useState();
 
     useEffect(()=>{
@@ -12,7 +12,7 @@ const CartPage = () => {
     }, [cart]);
 
     return (
-        <div>
+        <div style={{ textAlign: "center" }}>
             <span style={{fontSize:30}}>My Cart</span> 
             <br/>
             <span style={{fontSize:30}}>Total:Rs.{total}</span>
@@ -25,4 +25,4 @@ const CartPage = () => {
     )
 }
 
-export default CartPage
+export default CartPage;

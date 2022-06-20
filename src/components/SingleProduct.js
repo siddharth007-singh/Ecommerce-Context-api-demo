@@ -1,9 +1,9 @@
-import React,{useContext} from 'react';
-import { Cart } from '../Context';
+import React from 'react';
+import { CartState } from '../Context';
 
 const SingleProduct = ({prod}) => {
 
-    const {cart, setCart} = useContext(Cart);
+    const {cart, setCart} = CartState();
 
     return (
         <div className="products">
@@ -28,4 +28,4 @@ const SingleProduct = ({prod}) => {
     )
 }
 
-export default SingleProduct
+export default SingleProduct;
